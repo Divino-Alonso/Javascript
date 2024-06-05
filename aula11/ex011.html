@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brasileira</title>
+</head>
+<body>
+    <h1>Nacionalidade</h1>
+    <input type="text" name="txt" id="txt">
+    <input type="button" value="Verificar" onclick="ver()">
+    <div id="res"></div>
+    <script>
+        function ver(){
+            var txt = document.querySelector('input#txt')
+            var res = document.querySelector('div#res')
+            var pais = txt.value
+            res.innerText = `Seu país é ${pais}`
+            if(pais == 'Brasil' || pais == 'brasil' ){
+                res.innerText = `Você é brasileiro`
+            } else {
+                res.innerText = `Você é estrageiro`
+            }
+        }
+    </script>
+</body>
+</html>
