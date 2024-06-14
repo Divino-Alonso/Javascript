@@ -1,42 +1,38 @@
 function contar(){
-    var inicio = document.getElementById('inNum1').value
-    var fim = document.getElementById('inNum2').value
-    var passo = document.getElementById('inNum3').value
-    var res = document.querySelector('div#res')
+    let inicio = document.getElementById('inNum1')
+    let fim = document.getElementById('inNum2')
+    let passo = document.getElementById('inNum3')
+    let res = document.getElementById('res')
 
-    inicio = Number(inicio)
-    fim = Number(fim)
-    passo = Number(passo)
+    
+    //if (isNaN(inicio) || isNaN(fim) || isNaN(passo) || passo <= 0)
+    if (inicio.value.length == 0 || fim.value.length == 0 || passo.value.length == 0) {
+        res.innerHTML = `Impossível contar`
+        
+    
+    } else {
 
-    if (isNaN(inicio) || isNaN(fim) || isNaN(passo) || passo <= 0){
-        alert("Por favor, insira valores validos.")
-        return
-    }
-
-    res.innerHTML = ' '   
-    var resultado = 'Contagem: '
-
-    if(inicio <= fim){
-        for (var i = inicio; i <= fim; i += passo) {
-            resultado += i 
-            if (i < fim){
-                resultado = resultado +  '👉' 
-            } else {
-                resultado += '🏁'
+        res.innerHTML = 'Contando: <br>'   
+        let i = Number(inicio.value)
+        let f = Number(fim.value)
+        let p = Number(passo.value)
+        if(p <= 0) {
+            alert('Passo inválido! Considerando PASSO 1')
+            p = 1
+        }
+        if (i < f) {
+            //contagem crescente
+            for (let c = i; c <= f; c += p) {
+                res.innerHTML += ` ${c} \u{1F449}`
+            }
+        } else {
+            //contagem regressiva
+            for (let c = i; c >= f; c-=p){
+                res.innerHTML += ` ${c} \u{1F449}`
             }
         }
-    } else { 
-        for(var i = inicio; i >= fim; i -= passo){
-            resultado += i 
-            if (i > fim){
-                resultado = resultado + '👉'
-            } else {
-                resultado += '🏁'
-            }
-        }
+    res.innerHTML += `\u{1F3c1}` 
     }
-    res.innerHTML = resultado
-}
-
+}        
 //maozinho &#128072;
 //bandeira &#127937;
